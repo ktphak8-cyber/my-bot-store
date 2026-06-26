@@ -1,1 +1,53 @@
 <html>...</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Software KH</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #1a1a1a; color: white; margin: 0; padding: 15px; text-align: center; }
+        h2 { color: #0088cc; margin-bottom: 20px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .card { background: #2a2a2a; border-radius: 12px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 1px solid #333; }
+        .card img { width: 100%; border-radius: 8px; height: 100px; object-fit: cover; }
+        .title { font-weight: bold; margin: 10px 0 5px 0; font-size: 16px; }
+        .price { color: #00cc66; font-size: 14px; font-weight: bold; margin-bottom: 10px; }
+        .btn { background: #0088cc; color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; }
+        .btn:hover { background: #00aacc; }
+    </style>
+</head>
+<body>
+
+    <h2>🛒 Digital Software KH</h2>
+    <p style="color: #aaa; font-size: 13px;">សូមជ្រើសរើសផលិតផលដែលអ្នកចង់ទិញ៖</p>
+
+    <div class="grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=400" alt="Netflix">
+            <div class="title">Netflix UHD</div>
+            <div class="price">$3.50 / ខែ</div>
+            <button class="btn" onclick="buyProduct('NETFLIX', '3.50')">ទិញភ្លាមៗ</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400" alt="Gemini">
+            <div class="title">Gemini AI</div>
+            <div class="price">$5.00 / ខែ</div>
+            <button class="btn" onclick="buyProduct('GEMINI', '5.00')">ទិញភ្លាមៗ</button>
+        </div>
+    </div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand(); 
+
+        function buyProduct(name, price) {
+            const data = JSON.stringify({ product: name, price: price });
+            tg.sendData(data);
+            tg.close();
+        }
+    </script>
+</body>
+</html>
